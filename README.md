@@ -1,3 +1,4 @@
+
 # Sprint 7 Module 4 Project
 
 ## Introduction
@@ -67,7 +68,7 @@ Have fun with the tasks, and check out the Solution Video for this project if yo
 
 Improve the App component so the user can toggle the UI between Spanish and English. The component receives a `lang` prop that defaults to "en". This is used to initialize a state that controls which language is used. This state can be toggled by clicking on the little flag, but all headings, buttons, placeholders and labels are using hard-coded text in English right now.
 
-1. Import the JSON file into the App component, and use it to extract the correct bits of text depending on the `language` component state.
+1. Import the JSON file into the App componeqnt, and use it to extract the correct bits of text depending on the `language` component state.
 
 2. Edit the JSX of the component to use the correct texts, labels and placeholders, depending on the `language` state.
 

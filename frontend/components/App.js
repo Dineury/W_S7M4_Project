@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import * as yup from 'yup'
 import schemas from '../../shared/schemas'
+import langJson from "../i18n/index.json"
 
 /*
   👉 TASK 2
@@ -64,7 +65,7 @@ export default function App({ lang = 'en' }) {
   return (
     <div>
       <h2>
-        Create an Account
+       {language === 'en' ? langJson.en.TEXT_HEADING_CREATE_ACCOUNT : langJson.esp.TEXT_HEADING_CREATE_ACCOUNT}
         <span onClick={() => setLanguage(language === 'en' ? 'esp' : 'en')}>
           {language === 'en' ? ' 🇺🇸' : ' 🇪🇸'}
         </span>
@@ -74,33 +75,33 @@ export default function App({ lang = 'en' }) {
         {failure && <h4 className="error">{failure}</h4>}
 
         <div className="inputGroup">
-          <label htmlFor="username">Username:</label>
-          <input id="username" name="username" onChange={onChange} value={values.username} type="text" placeholder="Type username" />
+          <label htmlFor="username">{language === 'en' ? langJson.en.LABEL_USERNAME : langJson.esp.LABEL_USERNAME}</label>
+          <input id="username" name="username" onChange={onChange} value={values.username} type="text" placeholder={language === 'en' ? langJson.en.PLACEHOLDER_USERNAME : langJson.esp.PLACEHOLDER_USERNAME} />
           {errors.username && <div className="validation">{errors.username}</div>}
         </div>
 
         <div className="inputGroup">
           <fieldset>
-            <legend>Favorite language:</legend>
+            <legend>{language === 'en' ? langJson.en.TEXT_FAV_LANG : langJson.esp.TEXT_FAV_LANG}</legend>
             <label>
               <input onChange={onChange} type="radio" name="favLanguage" value="javascript" checked={values.favLanguage == 'javascript'} />
-              JavaScript
+              {language === 'en' ? langJson.en.TEXT_FAV_LANG_JS : langJson.esp.TEXT_FAV_LANG_JS}
             </label>
             <label>
               <input onChange={onChange} type="radio" name="favLanguage" value="rust" checked={values.favLanguage == 'rust'} />
-              Rust
+            {language === 'en' ? langJson.en.TEXT_FAV_LANG_RUST : langJson.esp.TEXT_FAV_LANG_RUST}
             </label>
           </fieldset>
           {errors.favLanguage && <div className="validation">{errors.favLanguage}</div>}
         </div>
 
         <div className="inputGroup">
-          <label htmlFor="favFood">Favorite food:</label>
+          <label htmlFor="favFood">{language === 'en' ? langJson.en.LABEL_FAV_FOOD : langJson.esp.LABEL_FAV_FOOD}</label>
           <select id="favFood" name="favFood" value={values.favFood} onChange={onChange}>
-            <option value="">-- Select favorite food --</option>
-            <option value="pizza">Pizza</option>
-            <option value="spaghetti">Spaghetti</option>
-            <option value="broccoli">Broccoli</option>
+            <option value="">{language === 'en' ? langJson.en.TEXT_OPT_FAV_FOOD_1 : langJson.esp.TEXT_OPT_FAV_FOOD_1}</option>
+            <option value="pizza">{language === 'en' ? langJson.en.TEXT_OPT_FAV_FOOD_2 : langJson.esp.TEXT_OPT_FAV_FOOD_2}</option>
+            <option value="spaghetti">{language === 'en' ? langJson.en.TEXT_OPT_FAV_FOOD_3 : langJson.esp.TEXT_OPT_FAV_FOOD_3}</option>
+            <option value="broccoli">{language === 'en' ? langJson.en.TEXT_OPT_FAV_FOOD_4 : langJson.esp.TEXT_OPT_FAV_FOOD_4}</option>
           </select>
           {errors.favFood && <div className="validation">{errors.favFood}</div>}
         </div>
@@ -108,13 +109,13 @@ export default function App({ lang = 'en' }) {
         <div className="inputGroup">
           <label>
             <input id="agreement" type="checkbox" name="agreement" checked={values.agreement} onChange={onChange} />
-            Agree to our terms
+          {language === 'en' ? langJson.en.LABEL_ACCEPT_TERMS : langJson.esp.LABEL_ACCEPT_TERMS}
           </label>
           {errors.agreement && <div className="validation">{errors.agreement}</div>}
         </div>
 
         <div>
-          <input type="submit" disabled={!submitAllowed} value="Send" />
+          <input type="submit" disabled={!submitAllowed} value={language === 'en' ? langJson.en.TEXT_SUBMIT : langJson.esp.TEXT_SUBMIT} />
         </div>
       </form>
     </div>
